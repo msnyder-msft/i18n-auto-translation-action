@@ -23,11 +23,9 @@ inputs:
     description: 'Your region. Used only by official Azure API'
     default: 'global'
   filePath: 
-    required: false
     description: 'Path to a single JSON file. Either filePath or dirPath is required'
     default: '/'
   dirPath: 
-    required: false
     description: 'Path to a directory in which you will recursively find all JSON files named [from].json (e.g. en.json). Either filePath or dirPath is required'
     default: '/'
   from: 
@@ -44,3 +42,6 @@ inputs:
 runs:
   using: 'node16'
   main: 'src/index.js'
+branding:
+  color: green
+  icon: book-open
