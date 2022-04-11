@@ -26,7 +26,7 @@ try {
     console.log(`The event payload: ${payload}`);
   }
 
-  let command = `npm run translate -- -k ${subscriptionKey} -f ${from} -t ${to}`;
+  let command = `i18n-auto-translation -f ${from} -t ${to} -a ${provider} -k ${subscriptionKey}`;
   if (filePath) {
     command += ` -p ${filePath}`;
   } else if (dirPath) {
