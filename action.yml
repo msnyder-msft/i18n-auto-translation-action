@@ -37,7 +37,7 @@ inputs:
     description: 'To which langauge you want to translate'
     default: '/'
   debug:
-    description: 'Prints out additional debug info'
+    description: 'Prints out additional debug info. NOTE: will include all of the parameters passed in including the subscription key'
     type: boolean
     default: false
 # outputs:

@@ -10,7 +10,7 @@ try {
   const dirPath = core.getInput('dirPath');
   const from = core.getInput('from');
   const to = core.getInput('to');
-  const debug = core.getInput('debug') === true;
+  const debug = core.getBooleanInput('debug');
   console.log(`***Starting translation using the ${provider} provider`);
 
   if (debug) {
