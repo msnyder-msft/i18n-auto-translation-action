@@ -43,5 +43,5 @@ runs:
   using: 'node16'
   main: 'src/index.js'
 branding:
-  color: green
+  color: blue
   icon: book-open
