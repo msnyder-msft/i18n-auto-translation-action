@@ -11,19 +11,21 @@ try {
   const from = core.getInput('from');
   const to = core.getInput('to');
   const debug = core.getBooleanInput('debug');
-  console.log(`***Starting translation using the ${provider} provider`);
+
+  console.log(`Starting translation using the ${provider} provider from ${from} to ${to} using the source(s) at ${dirPath || filePath}`);
 
   if (debug) {
-    console.log(`provider ${provider}`);
-    console.log(`subscriptionKey ${subscriptionKey}`);
-    console.log(`location ${location}`);
-    console.log(`filePath ${filePath}`);
-    console.log(`dirPath ${dirPath}`);
-    console.log(`from ${from}`);
-    console.log(`to ${to}`);
+    console.log(`Parameters:`);
+    console.log(`    provider: ${provider}`);
+    console.log(`    subscriptionKey: ${subscriptionKey}`);
+    console.log(`    location: ${location}`);
+    console.log(`    filePath: ${filePath}`);
+    console.log(`    dirPath: ${dirPath}`);
+    console.log(`    from: ${from}`);
+    console.log(`    to: ${to}`);
     // Get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
-    console.log(`The event payload: ${payload}`);
+    // const payload = JSON.stringify(github.context.payload, undefined, 2)
+    // console.log(`The event payload: ${payload}`);
   }
 
   let command = `i18n-auto-translation -f ${from} -t ${to} -a ${provider} -k ${subscriptionKey}`;
@@ -39,13 +41,9 @@ try {
     console.log('Executing command');
     console.log(command);
   }
-  // childProcess.execSync(command);
+  // inherit so we can see the output in the builds
   childProcess.execSync(command, { stdio: 'inherit' });
-  console.log(`***Finished translation.`);
-
-  // console.log(`Hello ${provider}`);
-  // core.setOutput("time", time);
-  // const time = (new Date()).toTimeString();
+  console.log(`Finished translation.`);
 } catch (error) {
   core.setFailed(error.message);
 }

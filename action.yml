@@ -40,9 +40,6 @@ inputs:
     description: 'Prints out additional debug info. NOTE: will include all of the parameters passed in including the subscription key'
     type: boolean
     default: false
-# outputs:
-#   time: # id of output
-#     description: 'The time we greeted you'
 runs:
   using: 'node16'
   main: 'src/index.js'
