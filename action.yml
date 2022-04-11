@@ -1,0 +1,46 @@
+name: 'i18n-auto-translation-action'
+author: 'msnyder-msft'
+description: 'GitHub action to translate the given files to the given languages'
+inputs:
+  provider:
+    description: 'API provider to use'
+    required: true
+    type: choice
+    options:
+    - google-official
+    - azure-official
+    - azure-rapid
+    - deep-rapid
+    - just-rapid
+    - lecto-rapid
+    - lingvanex-rapid
+    - nlp-rapid
+  subscriptionKey: 
+    description: 'The API key for the provider'
+    required: true
+    default: ''
+  location: 
+    description: 'Your region. Used only by official Azure API'
+    default: 'global'
+  filePath: 
+    required: false
+    description: 'Path to a single JSON file. Either filePath or dirPath is required'
+    default: '/'
+  dirPath: 
+    required: false
+    description: 'Path to a directory in which you will recursively find all JSON files named [from].json (e.g. en.json). Either filePath or dirPath is required'
+    default: '/'
+  from: 
+    required: true
+    description: 'From which language you want to translate. Ex: en'
+    default: 'en'
+  to: 
+    required: true
+    description: 'To which langauge you want to translate'
+    default: '/'
+# outputs:
+#   time: # id of output
+#     description: 'The time we greeted you'
+runs:
+  using: 'node16'
+  main: 'src/index.js'
