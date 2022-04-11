@@ -39,8 +39,8 @@ try {
     console.log('Executing command');
     console.log(command);
   }
-  childProcess.execSync(command);
-  // childProcess.execSync(command, { stdio: 'inherit' });
+  // childProcess.execSync(command);
+  childProcess.execSync(command, { stdio: 'inherit' });
   console.log(`***Finished translation.`);
 
   // console.log(`Hello ${provider}`);
