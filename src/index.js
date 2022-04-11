@@ -26,7 +26,7 @@ try {
     console.log(`The event payload: ${payload}`);
   }
 
-  const command = `npm run translate -- -k ${subscriptionKey} -f ${from} -t ${to}`;
+  let command = `npm run translate -- -k ${subscriptionKey} -f ${from} -t ${to}`;
   if (filePath) {
     command += ` -p ${filePath}`;
   } else if (dirPath) {
