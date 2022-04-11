@@ -34,7 +34,7 @@ inputs:
     default: 'en'
   to: 
     required: true
-    description: 'To which langauge you want to translate'
+    description: 'CSV list of the languages to which you want to translate. Example: de,es,fr'
     default: '/'
   debug:
     description: 'Prints out additional debug info. NOTE: will include all of the parameters passed in including the subscription key'

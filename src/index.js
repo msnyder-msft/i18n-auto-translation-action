@@ -9,9 +9,10 @@ try {
   const dirPath = core.getInput('dirPath');
   const from = core.getInput('from');
   const to = core.getInput('to');
+  const languages = to.split(',');
   const debug = core.getBooleanInput('debug');
 
-  console.log(`Starting translation using the ${provider} provider from ${from} to ${to} using the source(s) at ${dirPath || filePath}`);
+  console.log(`Starting translation using the ${provider} provider from ${from} to ${to} (${languages.length} language${languages.length > 0 ? 's' : ''}) using the source(s) at ${dirPath || filePath}`);
 
   if (debug) {
     console.log(`Parameters:`);
@@ -27,21 +28,24 @@ try {
     // console.log(`The event payload: ${payload}`);
   }
 
-  let command = `i18n-auto-translation -f ${from} -t ${to} -a ${provider} -k ${subscriptionKey}`;
-  if (filePath) {
-    command += ` -p ${filePath}`;
-  } else if (dirPath) {
-    command += ` -d ${dirPath}`
-  }
-  if (location) {
-    command += ` -l ${location}`;
-  }
-  if (debug) {
-    console.log('Executing command');
-    console.log(command);
-  }
-  // inherit so we can see the output in the builds
-  childProcess.execSync(command, { stdio: 'inherit' });
+  languages.forEach((language) => {
+    console.log(`Translating ${language.trim()}`);
+    let command = `i18n-auto-translation -f ${from} -t ${language.trim()} -a ${provider} -k ${subscriptionKey}`;
+    if (filePath) {
+      command += ` -p ${filePath}`;
+    } else if (dirPath) {
+      command += ` -d ${dirPath}`
+    }
+    if (location) {
+      command += ` -l ${location}`;
+    }
+    if (debug) {
+      console.log('Executing command');
+      console.log(command);
+    }
+    // inherit so we can see the output in the builds
+    childProcess.execSync(command, { stdio: 'inherit' });
+  });
   console.log(`Finished translation.`);
 } catch (error) {
   core.setFailed(error.message);
