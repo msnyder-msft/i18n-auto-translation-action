@@ -63,7 +63,7 @@ translate-files:
           uses: actions/checkout@v2
 
         - name: Install localization package
-          run: npm install -g i18n-auto-translation
+          run: npm install -g i18n-auto-translation-msnyder
 
         - name: Translate files
           id: translate

@@ -30,7 +30,7 @@ try {
 
   languages.forEach((language) => {
     console.log(`Translating ${language.trim()}`);
-    let command = `i18n-auto-translation -f ${from} -t ${language.trim()} -a ${provider} -k ${subscriptionKey}`;
+    let command = `i18n-auto-translation-msnyder -f ${from} -t ${language.trim()} -a ${provider} -k ${subscriptionKey}`;
     if (filePath) {
       command += ` -p ${filePath}`;
     } else if (dirPath) {
