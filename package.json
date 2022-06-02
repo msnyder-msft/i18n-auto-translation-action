@@ -19,6 +19,7 @@
   "homepage": "https://github.com/msnyder-msft/i18n-auto-translation-action#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "i18n-auto-translation": "^1.1.9"
+    "i18n-auto-translation": "^1.1.9",
+    "protobufjs": "^6.11.3"
   }
 }
